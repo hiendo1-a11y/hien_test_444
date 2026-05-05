@@ -104,7 +104,7 @@ Requirements:
             timeout=120,
         )
         print(f"Status: {resp.status_code}")
-        if resp.status_code == 429:
+        if resp.status_code in (429, 503):
             wait = 10 * (attempt + 1)
             print(f"Rate limit (429), waiting {wait}s... (attempt {attempt+1}/3)")
             print(f"Response: {resp.text[:500]}")
